@@ -78,3 +78,19 @@ int main() {
     }
     return 0;
 }
+
+#include "comonents/Map.hpp"
+
+Map levelMap;
+int main() {
+    levelMap.loadFromFile("resources/levels/past.txt");
+    
+    for (int y = 0; y < levelMap.getHeight(); ++y) {
+        for (int x = 0; x < levelMap.getWidth(); ++x) {
+            char tile = levelMap.getTile(x, y);
+            // Process each tile as needed
+        }
+        std::cout << std::endl;
+    }
+    return 0;
+}
