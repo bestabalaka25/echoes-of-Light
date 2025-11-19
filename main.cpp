@@ -79,7 +79,7 @@ int main() {
     return 0;
 }
 
-#include "comonents/Map.hpp"
+#include "comonents/Map.h"
 
 Map levelMap;
 int main() {
@@ -93,4 +93,20 @@ int main() {
         std::cout << std::endl;
     }
     return 0;
+}
+
+#include "LevelManager.h"
+LevelManager levels;
+levels.loadCurrentLevel();
+
+while (window.isOpen()) {
+    // Game loop logic
+    if (playerReachesLevelEnd()) {
+        levels.nextLevel();
+    } else{
+        std::cout << "All levels completed!" << std::endl;
+        break;
+    }
+    // Rendering and other game logic
+    draw(levels.getMap());
 }
