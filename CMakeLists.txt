@@ -20,6 +20,7 @@ link_directories("${CMAKE_BINARY_DIR}/lib/SFML/lib")
 #### Platformer Game ####
 set(EOL_SOURCES
     main.cpp
+    src/Game.cpp
     src/components/Component.cpp
     src/components/TransformComponent.cpp
     src/components/RenderComponent.cpp

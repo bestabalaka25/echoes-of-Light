@@ -2,14 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include <vector>
 #include <memory>
+#include <string>
+#include <vector>
 
-// Forward declarations
-namespace eol {
-    class Component;
-    using ComponentPtr = std::unique_ptr<Component>;
-}
+#include "components/Component.h"
 
 // Simple Entity structure (same as before)
 struct Entity {
