@@ -4,7 +4,7 @@
 
 MainMenu::MainMenu() {
 
-    if (!font.loadFromFile("resources/fonts/ScienceGothic.ttf")) {
+    if (!font.openFromFile("resources/fonts/ScienceGothic.ttf")) {
         std::cout << "Failed to load font!\n";
     }
 
@@ -32,24 +32,35 @@ void MainMenu::updateVisuals() {
 }
 
 int MainMenu::run(sf::RenderWindow& window) {
+    const auto buttonCount = static_cast<int>(buttons.size());
+    if (buttonCount == 0) {
+        return 2;
+    }
+
     while (window.isOpen()) {
-        
 
-        while (window.pollEvent()) {
-            if (event.type == sf::Event::Closed)
-                return 2; // Quit
+        while (const auto event = window.pollEvent()) {
+            if (event->is<sf::Event::Closed>()) {
+                window.close();
+                return 2;
+            }
 
-            if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::Up) {
-                    selectedIndex = (selectedIndex - 1 + buttons.size()) % buttons.size();
+            if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
+                switch (keyPressed->code) {
+                case sf::Keyboard::Key::Up:
+                    selectedIndex = (selectedIndex - 1 + buttonCount) % buttonCount;
                     updateVisuals();
-                }
-                else if (event.key.code == sf::Keyboard::Down) {
-                    selectedIndex = (selectedIndex + 1) % buttons.size();
+                    break;
+                case sf::Keyboard::Key::Down:
+                    selectedIndex = (selectedIndex + 1) % buttonCount;
                     updateVisuals();
-                }
-                else if (event.key.code == sf::Keyboard::Enter) {
+                    break;
+                case sf::Keyboard::Key::Enter:
                     return selectedIndex;
+                case sf::Keyboard::Key::Escape:
+                    return 2;
+                default:
+                    break;
                 }
             }
         }
