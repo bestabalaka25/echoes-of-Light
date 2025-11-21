@@ -1,19 +1,31 @@
 #include <exception>
 #include <iostream>
 
+#include "SFML/Graphics.hpp"
 #include "Game.h"
+#include "MainMenu.h"
+
+
 
 int main() {
-    try {
+
+    sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Game");
+
+    
+    MainMenu menu;
+
+    int choice = menu.run(window);
+
+    if (choice == 0) {
         Game game;
         return game.run();
     }
-    catch (const std::exception& ex) {
-        std::cerr << "Fatal error: " << ex.what() << std::endl;
-        return -1;
+    else if(choice == 1){
+        // Options menu to be implemented
+        return 0;
     }
-    catch (...) {
-        std::cerr << "Fatal error: Unknown exception" << std::endl;
-        return -1;
+    else {
+        return 0;
+        // Quit the game
     }
 }

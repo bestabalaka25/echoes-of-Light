@@ -49,6 +49,8 @@ bool Game::initialize() {
     window_.create(sf::VideoMode({ windowWidth, windowHeight }), windowTitle);
     window_.setFramerateLimit(framerateLimit);
 
+    
+
     std::cout << "=== ECHOES OF LIGHT ===" << std::endl;
 
     if (!loadResources()) {

@@ -21,6 +21,7 @@ link_directories("${CMAKE_BINARY_DIR}/lib/SFML/lib")
 set(EOL_SOURCES
     main.cpp
     src/Game.cpp
+    src/MainMenu.cpp
     src/components/Component.cpp
     src/components/TransformComponent.cpp
     src/components/RenderComponent.cpp
@@ -32,10 +33,11 @@ set(EOL_SOURCES
     src/components/PuzzleComponent.cpp
     src/components/UpgradeComponent.cpp
     src/Systems.cpp
+  
     
 )
 
-add_executable(echoes-of-light ${EOL_SOURCES}  )
+add_executable(echoes-of-light ${EOL_SOURCES} )
 target_include_directories(echoes-of-light PRIVATE ${SFML_INCS} include)
 target_link_libraries(echoes-of-light sfml-graphics)
 

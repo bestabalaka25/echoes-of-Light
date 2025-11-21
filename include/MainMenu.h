@@ -1,9 +1,10 @@
 #pragma once
-#include "State.h"
-#include <vector>
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <vector>
 
-class MainMenu : public State {
+
+class MainMenu  {
 private:
     sf::Font font;
     std::vector<sf::Text> buttons;
@@ -13,8 +14,7 @@ private:
 
 public:
     MainMenu();
-
-    void handleInput(sf::RenderWindow& window) override;
-    void update(float dt) override {}
-    void draw(sf::RenderWindow& window) override;
+    int run(sf::RenderWindow& window);
+    void update(float dt)  {}
+    void draw(sf::RenderWindow& window);
 };
